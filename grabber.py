@@ -17,7 +17,7 @@ SOURCES = [
 def run_grabber():
     active_lines = set()
     
-    # En-têtes HTTP complets pour simuler un vrai navigateur
+    # En-têtes HTTP pour simuler un vrai navigateur
     headers = {
         'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/122.0.0.0 Safari/537.36',
         'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,*/*;q=0.8',
@@ -26,7 +26,6 @@ def run_grabber():
     }
 
     print("[*] Début de la récupération des lignes CCcam...")
-
     session = requests.Session()
 
     for url in SOURCES:
@@ -37,12 +36,12 @@ def run_grabber():
             if response.status_code == 200:
                 content = response.text
                 
-                # Regex élargie pour capturer C: et les éventuels espaces ou tabulations
+                # Expression régulière pour capturer les lignes C:
                 matches = re.findall(r'C:\s*([a-zA-Z0-9.-]+)\s+(\d{2,5})\s+([^\s]+)\s+([^\s]+)', content)
                 
                 found_on_page = 0
                 for host, port, user, passwd in matches:
-                    # Nettoyage des balises HTML parasites si présentes dans le match
+                    # Nettoyage d'éventuelles balises HTML parasites
                     host = re.sub(r'<[^>]+>', '', host)
                     passwd = re.sub(r'<[^>]+>', '', passwd)
                     
@@ -59,7 +58,7 @@ def run_grabber():
         except requests.exceptions.RequestException as e:
             print(f"[!] Erreur réseau sur {url}: {e}")
 
-    # Ajout de sources de secours garanties
+    # Ajout de la source de secours garantie
     active_lines.add("C: dream4ever.ddns.net 33760 dream4evertwo.info dream4evertwo.info")
 
     output_filename = "Oscam line Grab.txt"
