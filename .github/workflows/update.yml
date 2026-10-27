@@ -2,8 +2,8 @@ name: Auto Update CCcam Lines
 
 on:
   schedule:
-    - cron: '0 * * * *' # Exécution toutes les heures
-  workflow_dispatch: # Permet un lancement manuel depuis GitHub
+    - cron: '0 * * * *'
+  workflow_dispatch:
 
 permissions:
   contents: write
@@ -33,18 +33,14 @@ jobs:
           git config --global user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git remote set-url origin https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }}.git
           
-          # 1. On met de côté les modifications locales pour repartir sur une base propre
-          git stash
-          
-          # 2. On récupère les derniers changements du dépôt distant
-          git pull origin main --rebase || true
-          
-          # 3. On réapplique nos modifications locales
-          git stash pop || true
-          
-          # 4. On ajoute et valide le fichier mis à jour par le script
+          # On ajoute directement le fichier généré par le script
           git add "Oscam line Grab"
-          git commit -m "Mise à jour automatique des lignes [skip ci]" || echo "Rien à commiter"
           
-          # 5. On envoie les modifications sur GitHub sans erreur de rejet
+          # On valide les changements localement
+          git commit -m "Mise à jour automatique des lignes [skip ci]" || echo "Aucun changement"
+          
+          # On récupère les éventuels écarts distants sans conflit de stash
+          git pull origin main --rebase --autostash || true
+          
+          # On pousse proprement sur la branche main
           git push origin main
