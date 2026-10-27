@@ -31,5 +31,8 @@ jobs:
         run: |
           git config --global user.name "github-actions[bot]"
           git config --global user.email "github-actions[bot]@users.noreply.github.com"
+          git status
           git add "Oscam line Grab"
-          git diff --quiet && git diff --staged --quiet || (git commit -m "Mise à jour automatique des lignes [skip ci]" && git pull --rebase origin main && git push origin main)
+          git commit -m "Mise à jour automatique des lignes [skip ci]" || echo "Rien à commiter"
+          git pull --rebase origin main || git pull origin main --allow-unrelated-histories
+          git push origin main
