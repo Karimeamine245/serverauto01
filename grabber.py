@@ -4,7 +4,7 @@ import urllib.request
 SOURCES = [
     "https://dream4evertwo.info/pages/D4E/",
     "https://cccamia.com/cccamfree1/",
-    "https://cccamiptv.tv/cccamfree-24h/,
+    "https://cccamiptv.tv/cccamfree-24h/",
     "https://cccam-premium.pro/free-cccam/",
     "https://cccamgalaxy.com/cccam-free/",
     "https://cccamhub.com/cccamfree/",
