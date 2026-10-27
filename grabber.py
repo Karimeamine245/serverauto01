@@ -2,11 +2,9 @@ import re
 import urllib.request
 
 SOURCES = [
-    "https://sky.dhoom.org/testoscam/",
-    "https://cccamiptv.tv/cccamfree-24h/",
-    "https://cccam.net/freecccam/",
-    "https://cccamhub.com/cccamfree/",
-    "https://cccam-premium.pro/free-cccam/"
+    "https://cccam-premium.pro/free-cccam/",
+    "https://testious.com/",
+    "https://raw.githubusercontent.com/abedmryan/cccamlist/refs/heads/main/cccam"
 ]
 
 def run_grabber():
@@ -22,22 +20,20 @@ def run_grabber():
             req = urllib.request.Request(url, headers=headers)
             with urllib.request.urlopen(req, timeout=10) as response:
                 content = response.read().decode('utf-8', errors='ignore')
-                # Expression régulière pour capturer les lignes C: host port user pass
                 matches = re.findall(r'C:\s*([a-zA-Z0-9.-]+)\s+(\d{2,5})\s+([^\s]+)\s+([^\s]+)', content)
                 for host, port, user, passwd in matches:
                     if '<' not in host and '>' not in host and len(port) < 6:
                         cline = f"C: {host} {port} {user} {passwd}"
                         active_lines.add(cline)
-            print(f"[+] Succès pour : {url}")
         except Exception as e:
             print(f"[!] Erreur sur {url}: {e}")
 
-    output_filename = "Oscam_line_Grab.txt"
+    output_filename = "Oscam line Grab"
     with open(output_filename, "w", encoding="utf-8") as f:
         for line in sorted(active_lines):
             f.write(line + "\n")
 
-    print(f"\n[✔] Terminé ! {len(active_lines)} lignes uniques enregistrées dans '{output_filename}'.")
+    print(f"[+] Succès ! {len(active_lines)} lignes enregistrées.")
 
 if __name__ == "__main__":
     run_grabber()
