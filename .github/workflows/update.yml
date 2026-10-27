@@ -2,18 +2,21 @@ name: Auto Update CCcam Lines
 
 on:
   schedule:
-    # S'exécute automatiquement toutes les heures (à la minute 0)
-    - cron: '0 * * * *'
-  workflow_dispatch: # Permet aussi de lancer manuellement en cas de besoin
+    - cron: '0 * * * *' # Exécution toutes les heures
+  workflow_dispatch: # Permet un lancement manuel depuis GitHub
+
+permissions:
+  contents: write
 
 jobs:
   update-lines:
     runs-on: ubuntu-latest
-    permissions:
-      contents: write
+
     steps:
       - name: Checkout du dépôt
         uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
 
       - name: Configuration de Python
         uses: actions/setup-python@v5
@@ -21,13 +24,14 @@ jobs:
           python-version: '3.10'
 
       - name: Exécution du script de récupération
-        run: python grabber.py
+        run: |
+          python script.py # Remplacez par le nom exact de votre script de scrape si nécessaire
 
-     - name: Commit et Push automatiques des nouvelles lignes
+      - name: Commit et Push automatiques des nouvelles lignes
         run: |
           git config --global user.name "github-actions[bot]"
           git config --global user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git fetch origin main
-          git pull --rebase origin main
+          git remote set-url origin https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }}.git
+          git pull origin main --rebase || echo "Pas de rébase nécessaire"
           git add .
           git diff --quiet && git diff --staged --quiet || (git commit -m "Mise à jour automatique (toutes les heures) [skip ci]" && git push origin main)
