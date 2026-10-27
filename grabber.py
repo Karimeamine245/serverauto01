@@ -2,6 +2,10 @@ import re
 import urllib.request
 
 SOURCES = [
+    "https://sky.dhoom.org/testoscam/",
+    "https://cccamiptv.tv/cccamfree-24h/",
+    "https://cccam.net/freecccam/",
+    "https://cccamhub.com/cccamfree/",
     "https://cccam-premium.pro/free-cccam/",
     "https://testious.com/",
     "https://raw.githubusercontent.com/abedmryan/cccamlist/refs/heads/main/cccam"
@@ -28,12 +32,12 @@ def run_grabber():
         except Exception as e:
             print(f"[!] Erreur sur {url}: {e}")
 
-    output_filename = "Oscam line Grab"
+    output_filename = "Oscam_line_Grab.txt"
     with open(output_filename, "w", encoding="utf-8") as f:
         for line in sorted(active_lines):
             f.write(line + "\n")
 
-    print(f"[+] Succès ! {len(active_lines)} lignes enregistrées.")
+    print(f"[+] Succès ! {len(active_lines)} lignes enregistrées dans '{output_filename}'.")
 
 if __name__ == "__main__":
     run_grabber()
