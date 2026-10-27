@@ -15,8 +15,6 @@ jobs:
     steps:
       - name: Checkout du dépôt
         uses: actions/checkout@v4
-        with:
-          fetch-depth: 0
 
       - name: Configuration de Python
         uses: actions/setup-python@v5
@@ -28,19 +26,8 @@ jobs:
           python grabber.py
 
       - name: Commit et Push automatiques des nouvelles lignes
-        run: |
-          git config --global user.name "github-actions[bot]"
-          git config --global user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git remote set-url origin https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }}.git
-          
-          # On ajoute directement le fichier généré par le script
-          git add "Oscam line Grab"
-          
-          # On valide les changements localement
-          git commit -m "Mise à jour automatique des lignes [skip ci]" || echo "Aucun changement"
-          
-          # On récupère les éventuels écarts distants sans conflit de stash
-          git pull origin main --rebase --autostash || true
-          
-          # On pousse proprement sur la branche main
-          git push origin main
+        uses: stefanzweifel/git-auto-commit-action@v5
+        with:
+          commit_message: "Mise à jour automatique des lignes [skip ci]"
+          file_pattern: "Oscam line Grab"
+          branch: main
