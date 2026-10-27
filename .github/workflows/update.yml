@@ -27,19 +27,11 @@ jobs:
         run: |
           python grabber.py
 
-     - name: Commit et Push automatiques des nouvelles lignes
+      - name: Commit et Push automatiques des nouvelles lignes
         run: |
           git config --global user.name "github-actions[bot]"
-          git config --global user.email "github-actions[bot]@users.noreply.github.com"
-          
-          # 1. On récupère d'abord les changements distants proprement en mode rebase
-          git pull --rebase origin main || echo "Aucun rebase nécessaire"
-          
-          # 2. On ajoute le fichier modifié par le script
-          git add "Oscam line Grab"
-          
-          # 3. On valide s'il y a des changements (évite l'erreur si le fichier est identique)
-          git diff --staged --quiet || git commit -m "Mise à jour automatique des lignes [skip ci]"
-          
-          # 4. On pousse le tout vers GitHub
-          git push origin main
+          git config --global user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git remote set-url origin https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }}.git
+          git pull origin main --rebase || echo "Pas de rébase nécessaire"
+          git add .
+          git diff --quiet && git diff --staged --quiet || (git commit -m "Mise à jour automatique (toutes les heures) [skip ci]" && git push origin main)
