@@ -2,8 +2,8 @@ import re
 import urllib.request
 
 SOURCES = [
-    "https://cccamiptv.tv/cccamfree-24h/",
-    "https://cccam.net/freecccam"
+    "https://dream4evertwo.info/pages/D4E",
+    "https://testious.com/"
 ]
 
 def run_grabber():
