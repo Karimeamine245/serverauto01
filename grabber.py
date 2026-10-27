@@ -2,8 +2,18 @@ import re
 import urllib.request
 
 SOURCES = [
-    "https://dream4evertwo.info/pages/D4E",
-    "https://testious.com/"
+    "https://cccamia.com/cccamfree1/",
+    "https://cccamiptv.tv/cccamfree-24h/",
+    "https://cccam-premium.pro/free-cccam/",
+    "https://cccamgalaxy.com/cccam-free/",
+    "https://cccamhub.com/cccamfree/",
+    "https://cccam.net/freecccame/",
+    "https://cccam.eu/free-cccam-test/",
+    "https://dhoom.org/test/",
+    "https://cccamlines.eu/#test/",
+    "https://cccam.eu/#test/",
+    "https://getcccam.com/",
+    "https://cccamteam.com/free-cccam-test/","
 ]
 
 def run_grabber():
