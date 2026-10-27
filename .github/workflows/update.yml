@@ -23,9 +23,11 @@ jobs:
       - name: Exécution du script de récupération
         run: python grabber.py
 
-      - name: Commit et Push automatiques des nouvelles lignes
+     - name: Commit et Push automatiques des nouvelles lignes
         run: |
           git config --global user.name "github-actions[bot]"
           git config --global user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git fetch origin main
+          git pull --rebase origin main
           git add .
-          git diff --quiet && git diff --staged --quiet || (git commit -m "Mise à jour automatique (toutes les heures) [skip ci]" && git pull --rebase origin main && git push origin main)
+          git diff --quiet && git diff --staged --quiet || (git commit -m "Mise à jour automatique (toutes les heures) [skip ci]" && git push origin main)
