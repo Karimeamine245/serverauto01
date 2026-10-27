@@ -27,9 +27,6 @@ def run_grabber():
         except Exception as e:
             print(f"[!] Erreur sur {url}: {e}")
 
-    # Ajout de la source de secours Dream4Ever garantie
-    active_lines.add("C: dream4ever.ddns.net 33760 dream4evertwo.info dream4evertwo.info")
-
     output_filename = "Oscam line Grab"
     with open(output_filename, "w", encoding="utf-8") as f:
         for line in sorted(active_lines):
