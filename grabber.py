@@ -10,7 +10,6 @@ SOURCES = [
     "https://cccamhub.com/cccamfree/",
     "https://cccam.net/freecccame/",
     "https://testious.com/old-free-cccam-servers/",
-    "https://cccamhub.com/cccamfree/",
     "https://cccam.eu/free-cccam-test/"
     "https://testious.com/",
     "https://raw.githubusercontent.com/abedmryan/cccamlist/refs/heads/main/cccam",
