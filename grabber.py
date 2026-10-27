@@ -4,14 +4,15 @@ import urllib.request
 SOURCES = [
     "https://dream4evertwo.info/pages/D4E",
     "https://cccamia.com/cccamfree1",
+    "https://dhoom.org/testoscam",
     "https://cccamiptv.tv/cccamfree-24h",
     "https://cccam-premium.pro/free-cccam",
     "https://cccamgalaxy.com/cccam-free",
     "https://cccamhub.com/cccamfree",
     "https://cccam.net/freecccame",
-    "https://testious.com/old-free-cccam-servers",
     "https://cccam.eu/free-cccam-test"
     "https://testious.com",
+    "https://testious.com/old-free-cccam-servers",
     "https://raw.githubusercontent.com/abedmryan/cccamlist/refs/heads/main/cccam",
     "https://raw.githubusercontent.com/anow2008/cccam/refs/heads/main/server"
 ]
