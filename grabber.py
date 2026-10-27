@@ -4,13 +4,17 @@ import urllib.request
 SOURCES = [
     "https://dream4evertwo.info/pages/D4E/",
     "https://cccamia.com/cccamfree1/",
+    "https://cccamiptv.tv/cccamfree-24h/,
     "https://cccam-premium.pro/free-cccam/",
     "https://cccamgalaxy.com/cccam-free/",
+    "https://cccamhub.com/cccamfree/",
+    "https://cccam.net/freecccame/",
+    "https://testious.com/old-free-cccam-servers/",
+    "https://cccamhub.com/cccamfree/",
+    "https://cccam.eu/free-cccam-test/"
     "https://testious.com/",
-    "https://raw.githubusercontent.com/free-cccam/free-cccam.github.io/main/cc.txt",
-    "https://raw.githubusercontent.com/cccam-free/server/main/CCcam.cfg",
-    "https://github.com/abedmryan/cccamlist/blob/main/cccam",
-    "https://github.com/anow2008/cccam/blob/main/server"
+    "https://raw.githubusercontent.com/abedmryan/cccamlist/refs/heads/main/cccam",
+    "https://raw.githubusercontent.com/anow2008/cccam/refs/heads/main/server"
 ]
 
 def run_grabber():
