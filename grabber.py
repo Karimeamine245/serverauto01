@@ -9,7 +9,12 @@ SOURCES = [
     "https://cccamgalaxy.com/cccam-free/",
     "https://cccamhub.com/cccamfree/",
     "https://cccam.net/freecccame/",
-    "https://cccam.eu/free-cccam-test/"
+    "https://cccam.eu/free-cccam-test/",
+    "https://dhoom.org/test/",
+    "https://cccamlines.eu/#test/,
+    "https://cccam.eu/#test/,
+    "https://getcccam.com/,
+    "https://cccamteam.com/free-cccam-test/,
     "https://testious.com/",
     "https://testious.com/old-free-cccam-servers/",
     "https://raw.githubusercontent.com/abedmryan/cccamlist/refs/heads/main/cccam",
