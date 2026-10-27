@@ -3,18 +3,6 @@ import urllib.request
 
 SOURCES = [
     "https://dream4evertwo.info/pages/D4E",
-    "https://cccamia.com/",
-    "https://cccamiptv.tv/",
-    "https://cccam-premium.pro/",
-    "https://cccamgalaxy.com/",
-    "https://cccamhub.com/",
-    "https://cccam.net/",
-    "https://cccam.eu/",
-    "https://dhoom.org",
-    "https://cccamlines.eu/",
-    "https://cccam.eu/",
-    "https://getcccam.com/",
-    "https://cccamteam.com/",
     "https://testious.com/"
 ]
 
