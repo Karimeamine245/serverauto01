@@ -33,17 +33,12 @@ jobs:
         git config --global user.email "41898282+github-actions[bot]@users.noreply.github.com"
         git remote set-url origin https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }}.git
         
-        # 0. On s'assure de nettoyer d'éventuels conflits de suivi
-        git status
-        
-        # 1. On ajoute immédiatement le fichier modifié par le script
+        # 1. On ajoute et on valide les modifications du script en PREMIER
         git add "Oscam line Grab"
+        git commit -m "Mise à jour automatique des lignes [skip ci]" || echo "Rien à commiter"
         
-        # 2. On fait le commit local des nouvelles lignes
-        git commit -m "Mise à jour automatique des lignes [skip ci]" || echo "Aucun changement à commiter"
+        # 2. On récupère les changements distants ensuite
+        git pull origin main --rebase || true
         
-        # 3. On récupère les modifications distantes proprement sans bloquer
-        git pull origin main --rebase --autostash || true
-        
-        # 4. On pousse vers GitHub sans erreur de rejet
+        # 3. On pousse vers GitHub
         git push origin main
