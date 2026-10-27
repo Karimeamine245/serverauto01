@@ -15,10 +15,7 @@ SOURCES = [
     "https://cccam.eu/#test/",
     "https://getcccam.com/",
     "https://cccamteam.com/free-cccam-test/",
-    "https://testious.com/",
-    "https://testious.com/old-free-cccam-servers/",
-    "https://raw.githubusercontent.com/abedmryan/cccamlist/refs/heads/main/cccam",
-    "https://raw.githubusercontent.com/anow2008/cccam/refs/heads/main/server"
+    "https://testious.com/old-free-cccam-servers/{}/",
 ]
 
 def run_grabber():
