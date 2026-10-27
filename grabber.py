@@ -13,7 +13,7 @@ SOURCES = [
     "https://cccamlines.eu/#test/",
     "https://cccam.eu/#test/",
     "https://getcccam.com/",
-    "https://cccamteam.com/free-cccam-test/","
+    "https://cccamteam.com/free-cccam-test/"
 ]
 
 def run_grabber():
