@@ -10,8 +10,8 @@ SOURCES = [
     "https://cccamgalaxy.com/cccam-free/",
     "https://cccamhub.com/cccamfree/",
     "https://cccam.net/freecccame/",
-    "https://cccam.eu/free-cccam-test/"
-    "https://testious.com/old-free-cccam-servers/",
+    "https://cccam.eu/free-cccam-test/",
+    "https://testious.com/old-free-cccam-servers/"
 ]
 
 def run_grabber():
