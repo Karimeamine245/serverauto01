@@ -8,8 +8,8 @@ SOURCES = [
     "https://cccamgalaxy.com/cccam-free/",
     "https://testious.com/",
     "https://raw.githubusercontent.com/free-cccam/free-cccam.github.io/main/cc.txt",
-    "https://raw.githubusercontent.com/cccam-free/server/main/CCcam.cfg"
-    "https://github.com/abedmryan/cccamlist/blob/main/cccam"
+    "https://raw.githubusercontent.com/cccam-free/server/main/CCcam.cfg",
+    "https://github.com/abedmryan/cccamlist/blob/main/cccam",
     "https://github.com/anow2008/cccam/blob/main/server"
 ]
 
