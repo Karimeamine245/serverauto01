@@ -1,16 +1,18 @@
-name: Auto Update CCcam Lines
+name: CCcam Auto Grabber
 
 on:
   schedule:
-    # S'exécute automatiquement toutes les heures (à la minute 0)
-    - cron: '0 * * * *'
-  workflow_dispatch: # Permet aussi de lancer manuellement en cas de besoin
+    - cron: '0 * * * *' # Exécution automatique toutes les heures
+  workflow_dispatch: # Permet de lancer le script manuellement depuis l'onglet Actions
 
 jobs:
-  update-lines:
+  run-grabber:
     runs-on: ubuntu-latest
+    
+    # Autoriser l'action à modifier et pousser du code sur le dépôt
     permissions:
       contents: write
+
     steps:
       - name: Checkout du dépôt
         uses: actions/checkout@v4
@@ -20,12 +22,22 @@ jobs:
         with:
           python-version: '3.10'
 
+      - name: Installer les dépendances
+        run: |
+          python -m pip install --upgrade pip
+          pip install requests
+
       - name: Exécution du script de récupération
         run: python grabber.py
 
       - name: Commit et Push automatiques des nouvelles lignes
         run: |
           git config --global user.name "github-actions[bot]"
-          git config --global user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git config --global user.email "github-actions[bot]@users.noreply.github.com"
+          
+          # Récupère les modifications distantes pour éviter l'erreur de rejet
+          git pull origin main --rebase
+          
           git add .
-          git diff --quiet && git diff --staged --quiet || (git commit -m "Mise à jour automatique (toutes les heures) [skip ci]" && git pull --rebase origin main && git push origin main)
+          git commit -m "Mise à jour automatique des lignes CCcam [skip ci]" || echo "Aucun changement à commiter"
+          git push origin main
