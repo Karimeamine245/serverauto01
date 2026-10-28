@@ -4,7 +4,6 @@ import urllib.request
 SOURCES = [
     "https://cccam-premium.pro/free-cccam/",
     "https://cccamsate.com/free",
-    "https://elegantcccam.com/cccam-free",
     "https://testious.com/",
     "https://testcline.com/free-cccam-server.php",
     "https://raw.githubusercontent.com/abedmryan/cccamlist/refs/heads/main/cccam"
