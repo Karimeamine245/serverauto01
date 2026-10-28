@@ -6,6 +6,7 @@ SOURCES = [
     "https://cccamsate.com/free",
     "https://testious.com/",
     "https://testcline.com/free-cccam-server.php",
+    "https://raw.githubusercontent.com/anow2008/cccam/refs/heads/main/server",
     "https://raw.githubusercontent.com/abedmryan/cccamlist/refs/heads/main/cccam"
 ]
 
