@@ -3,11 +3,15 @@ import urllib.request
 
 SOURCES = [
     "https://cccam-premium.pro/free-cccam/",
-    "https://cccamsate.com/free"
+    "https://cccamsate.com/free",
+    "https://testious.com/",
+    "https://testcline.com/free-cccam-server.php",
+    "https://raw.githubusercontent.com/abedmryan/cccamlist/refs/heads/main/cccam"
 ]
 
 def run_grabber():
-    active_lines = set()
+    seen_lines = set()
+    ordered_lines = []
     headers = {
         'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36'
     }
@@ -23,16 +27,19 @@ def run_grabber():
                 for host, port, user, passwd in matches:
                     if '<' not in host and '>' not in host and len(port) < 6:
                         cline = f"C: {host} {port} {user} {passwd}"
-                        active_lines.add(cline)
+                        # On évite les doublons tout en gardant l'ordre d'apparition par source
+                        if cline not in seen_lines:
+                            seen_lines.add(cline)
+                            ordered_lines.append(cline)
         except Exception as e:
             print(f"[!] Erreur sur {url}: {e}")
 
     output_filename = "Oscam line Grab"
     with open(output_filename, "w", encoding="utf-8") as f:
-        for line in sorted(active_lines):
+        for line in ordered_lines:
             f.write(line + "\n")
 
-    print(f"[+] Succès ! {len(active_lines)} lignes enregistrées.")
+    print(f"[+] Succès ! {len(ordered_lines)} lignes enregistrées dans l'ordre des sources.")
 
 if __name__ == "__main__":
     run_grabber()
